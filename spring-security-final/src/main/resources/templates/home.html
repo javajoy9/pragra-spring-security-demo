@@ -10,5 +10,10 @@
 
         <li>Click here for <a th:href="@{/ca-en}">English</a> greeting.</li>
         <li>Click here for <a th:href="@{/ca-fr}">French</a> greeting.</li>
+    <div>
+        <form th:action="@{/logout}" method="post">
+            <input type="submit" value="Logout">
+        </form>
+    </div>
     </body>
 </html>
