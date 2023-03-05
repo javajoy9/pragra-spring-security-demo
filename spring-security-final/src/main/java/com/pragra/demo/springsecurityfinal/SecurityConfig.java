@@ -28,34 +28,20 @@ public class SecurityConfig {
     }
 
     @Bean
-    public SecurityFilterChain filetChains(HttpSecurity http) throws Exception {
-        http.authorizeHttpRequests((requests) ->
-                requests.requestMatchers("/", "/home")
-                        .authenticated().
-                        anyRequest()
-                        .permitAll())
-
-                .formLogin((form) ->
-                form.loginPage("/login")
-                        .permitAll())
-                .logout((logout) ->
-                        logout.permitAll());
-        return http.build();
-    }
-
-    /*@Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests()
-                .requestMatchers("/","/home").hasAnyRole("ADMIN", "USER")
-                .requestMatchers("/ca-en", "/ca-fr").hasAnyRole("ADMIN", "USER")
-                .and().formLogin()
+                .requestMatchers("/","home").hasAnyRole("ADMIN", "USER")
+                .requestMatchers("/ca-en", "/ca-fr").hasAnyRole("USER")
+                .anyRequest().authenticated()
+                .and()
+                .formLogin()
                 .loginPage("/login")
-                .successForwardUrl("/home")
                 .permitAll()
-                .and().csrf().disable();
+                .and()
+                .logout().permitAll();
 
-        return http.build();
-    }*/
+        return  http.build();
+    }
 
     @Bean
     public PasswordEncoder passwordEncoder() {
