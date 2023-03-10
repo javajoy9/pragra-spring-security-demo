@@ -1,0 +1,9 @@
+<header>
+    <nav>
+
+        <ul>
+                <a *ngIf="!basicAuthenticationService.isUserLoggedIn()" routerLink="/login" class="nav-link">Login</a>
+                <a *ngIf="basicAuthenticationService.isUserLoggedIn()" routerLink="/logout" class="nav-link">Logout</a>
+        </ul>
+    </nav>
+</header>
